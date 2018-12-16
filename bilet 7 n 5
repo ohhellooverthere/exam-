@@ -1,0 +1,35 @@
+//функцыя, которая удаляет все пустые строчки из тектового файла
+#include <iostream>
+#include<string>
+#include <fstream>
+using namespace std;
+void deleting();
+
+int main(int argc, const char * argv[]) {
+    deleting();
+    
+    return 0;
+}
+void deleting()
+{
+    string path = "Myfile.txt";
+    fstream fs;
+    fs.open(path,fstream::out|fstream::in);// out запись; in - чтение
+    string BufferString= "";//весь текст
+    string СurrentLine;// текущая строка
+    while (getline(fs, СurrentLine))
+    {
+        if(!СurrentLine.empty())
+        {
+            BufferString= BufferString + СurrentLine;
+        }
+        else
+        {
+            BufferString= BufferString + '\n';
+        }
+    }
+    fs<<BufferString;
+    fs.close();
+    
+    
+}
